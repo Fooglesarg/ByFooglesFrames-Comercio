@@ -1,0 +1,584 @@
+/* =========================================
+   1. VARIABLES Y CONFIGURACIÓN GENERAL
+   ========================================= */
+:root {
+    --bg-main: #05070a;        /* Negro azulado profundo */
+    --bg-card: #0b0f17;        /* Fondo para tarjetas/secciones */
+    --accent: #00d4ff;         /* Cian eléctrico principal */
+    --accent-hover: #0099cc;   /* Hover para botones */
+    --text-main: #ffffff;
+    --text-dim: rgba(255, 255, 255, 0.65);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* =========================================
+   2. NAVBAR
+   ========================================= */
+.navbar-comercial {
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    z-index: 1000;
+    padding: 20px 8%;
+    background: rgba(5, 7, 10, 0.85);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-logo {
+    font-size: 1.2rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: var(--text-main);
+    text-decoration: none;
+}
+
+.brand-logo span {
+    color: var(--accent);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 35px;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--text-main);
+}
+
+.btn-nav {
+    padding: 10px 22px;
+    border: 1px solid var(--accent);
+    color: var(--accent) !important;
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+.btn-nav:hover {
+    background: var(--accent);
+    color: #000 !important;
+}
+
+/* =========================================
+   3. HERO SECTION
+   ========================================= */
+.hero-comercial {
+    height: 90vh;
+    min-height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 8%;
+    background: radial-gradient(circle at center, rgba(0, 212, 255, 0.08) 0%, transparent 70%);
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.hero-subtitle {
+    display: inline-block;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    color: var(--accent);
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.hero-comercial h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 25px;
+    letter-spacing: -1px;
+}
+
+.hero-comercial p {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    max-width: 650px;
+    margin: 0 auto 40px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 16px 36px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: #000;
+}
+
+.btn-primary:hover {
+    background: var(--accent-hover);
+    transform: translateY(-3px);
+}
+
+.btn-secondary {
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.btn-secondary:hover {
+    border-color: var(--text-main);
+    transform: translateY(-3px);
+}
+
+/* =========================================
+   LÍNEA HORIZONTAL ANIMADA DE COLOR
+   ========================================= */
+.animated-line {
+    width: 100%;
+    height: 2px; /* Grosor elegante; si querés que destaque más podés subirlo a 3px */
+    background: linear-gradient(
+        90deg, 
+        rgba(5, 7, 10, 1) 0%, 
+        var(--accent) 35%, 
+        #ffffff 50%, 
+        var(--accent) 65%, 
+        rgba(5, 7, 10, 1) 100%
+    );
+    background-size: 200% 100%;
+    animation: moveGradient 4s linear infinite;
+    box-shadow: 0 0 12px rgba(0, 212, 255, 0.4); /* Resplandor/glow de neón */
+}
+
+@keyframes moveGradient {
+    0% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+/* =========================================
+   4. SERVICIOS Y CARACTERÍSTICAS
+   ========================================= */
+.services-section, .features-section, .gallery-section, .contact-section {
+    padding: 120px 8%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-dim);
+    margin-bottom: 60px;
+    font-size: 0.95rem;
+}
+
+.services-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.service-card {
+    background: var(--bg-card);
+    padding: 40px 30px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+    width: calc(33.333% - 20px); 
+    min-width: 280px;
+    box-sizing: border-box;
+}
+
+.service-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-8px);
+}
+
+.service-icon {
+    font-size: 2rem;
+    color: var(--accent);
+    margin-bottom: 25px;
+}
+
+.service-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.service-card p {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+/* CARACTERÍSTICAS DE VALOR */
+.features-section {
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 80px 8%;
+}
+
+.features-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.feature-box {
+    text-align: center;
+    max-width: 300px;
+}
+
+.feature-box i {
+    font-size: 1.8rem;
+    color: var(--accent);
+    margin-bottom: 15px;
+}
+
+.feature-box h4 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.feature-box p {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+/* =========================================
+   5. GALERÍA COMPACTA
+   ========================================= */
+.compact-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+    margin-top: 50px;
+}
+
+.gallery-item {
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    border-radius: 4px;
+    background: #000;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.gallery-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8);
+    transition: var(--transition);
+}
+
+.gallery-item:hover img {
+    filter: brightness(1.05);
+    transform: scale(1.08);
+}
+
+.portfolio-banner {
+    margin-top: 60px;
+    text-align: center;
+    padding: 40px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.portfolio-banner p {
+    color: var(--text-dim);
+    margin-bottom: 20px;
+}
+
+.btn-portfolio {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: var(--transition);
+}
+
+.btn-portfolio:hover {
+    color: var(--text-main);
+    transform: translateX(5px);
+}
+
+/* MODAL LIGHTBOX / VISTA PREVIA */
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 6px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    object-fit: contain;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.modal-close:hover {
+    color: var(--accent);
+}
+
+/* =========================================
+   6. CONTACTO Y FORMULARIO
+   ========================================= */
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.contact-info h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.contact-info p {
+    color: var(--text-dim);
+    margin-bottom: 40px;
+}
+
+.direct-channels {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.channel-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--text-main);
+    transition: var(--transition);
+}
+
+.channel-card:hover {
+    border-color: var(--accent);
+    transform: translateX(8px);
+}
+
+.channel-card i {
+    font-size: 1.5rem;
+    color: var(--accent);
+}
+
+.channel-card span {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.channel-card strong {
+    font-size: 1rem;
+}
+
+/* ESTILOS FORMULARIO */
+.contact-form-wrapper {
+    background: var(--bg-card);
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: var(--text-dim);
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    width: 100%;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus, 
+.form-group select:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.form-group select option {
+    background: var(--bg-card);
+    color: #fff;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 16px;
+    background: var(--accent);
+    border: none;
+    color: #000;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-submit:hover {
+    background: var(--accent-hover);
+}
+
+/* =========================================
+   7. FOOTER Y RESPONSIVE
+   ========================================= */
+.footer-comercial {
+    text-align: center;
+    padding: 40px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.8rem;
+    color: var(--text-dim);
+}
+
+@media (max-width: 900px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .hero-comercial h1 {
+        font-size: 2.5rem;
+    }
+
+    .service-card {
+        width: 100%;
+    }
+
+    .compact-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+
+    .contact-form-wrapper {
+        padding: 25px;
+    }
+}
