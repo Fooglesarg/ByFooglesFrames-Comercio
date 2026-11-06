@@ -98,6 +98,28 @@ body {
     color: #000 !important;
 }
 
+/* Botón de menú (solo visible en celular) */
+.nav-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-main);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.nav-toggle:hover,
+.nav-toggle[aria-expanded="true"] {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
 /* =========================================
    3. HERO SECTION
    ========================================= */
@@ -648,6 +670,217 @@ body {
     padding-top: 15px;
 }
 
+.faq-list {
+    margin-left: 20px;
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.faq-group-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--accent);
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* =========================================
+   BLOQUES FOTOGRAFÍA / DESARROLLO
+   ========================================= */
+section[id] {
+    scroll-margin-top: 80px; /* Que el título no quede debajo de la barra fija */
+}
+
+.block-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    color: var(--accent);
+    margin-bottom: 15px;
+}
+
+.service-icon-plus {
+    font-size: 0.9rem;
+    margin: 0 8px;
+    vertical-align: middle;
+    color: var(--text-dim);
+}
+
+/* Fila discreta de tecnologías */
+.tech-line {
+    margin-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px 25px;
+}
+
+.tech-line span {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--text-dim);
+}
+
+.tech-line ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.tech-line li {
+    font-size: 0.8rem;
+    padding: 6px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    color: var(--text-dim);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* =========================================
+   TRABAJOS: SUBTÍTULOS Y PROYECTOS DE DESARROLLO
+   ========================================= */
+.works-subtitle {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.works-subtitle-dev {
+    margin-top: 90px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition);
+}
+
+.project-card:hover {
+    border-color: var(--accent);
+}
+
+.project-shots {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    padding: 6px;
+    background: #000;
+}
+
+.project-shot {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.project-shot-main {
+    grid-column: 1 / -1;
+}
+
+/* Sin miniaturas: la captura ocupa el mismo alto que el bloque del CRM */
+.project-shot-solo {
+    aspect-ratio: 16 / 15;
+}
+
+.project-shot img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    filter: brightness(0.85);
+    transition: var(--transition);
+}
+
+.project-shot:hover img {
+    filter: brightness(1.05);
+    transform: scale(1.04);
+}
+
+.project-body {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex: 1;
+}
+
+.project-type {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--accent);
+}
+
+.project-body h4 {
+    font-size: 1.25rem;
+    letter-spacing: 1px;
+    line-height: 1.3;
+}
+
+.project-body p {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+.project-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.85rem;
+}
+
+.project-features i {
+    color: var(--accent);
+    margin-right: 8px;
+}
+
+.project-note {
+    font-size: 0.75rem !important;
+    font-style: italic;
+    margin-top: auto;
+}
+
+.project-body .btn-portfolio {
+    margin-top: auto;
+    align-self: flex-start;
+}
+
 /* =========================================
    7. FOOTER Y RESPONSIVE
    ========================================= */
@@ -664,8 +897,46 @@ body {
         grid-template-columns: 1fr;
     }
     
+    .nav-toggle {
+        display: flex;
+    }
+
+    /* Menú desplegable debajo de la barra */
     .nav-links {
-        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 10px 8% 25px;
+        background: var(--bg-main);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        border-bottom: 1px solid var(--border-color);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: var(--transition);
+    }
+
+    .nav-links.abierto {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .nav-links li a {
+        display: block;
+        padding: 16px 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-links li a.btn-nav {
+        margin-top: 20px;
+        padding: 14px 22px;
+        text-align: center;
+        border-bottom: 1px solid var(--accent);
     }
     
     .hero-comercial h1 {
