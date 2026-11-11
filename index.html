@@ -4,190 +4,186 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ByFoogles Visuals | Fotografía y Desarrollo a Medida</title>
-
-    <!-- Meta Etiquetas para Buscadores (SEO) -->
     <meta name="description" content="Fotografía profesional y desarrollo de sitios web, aplicaciones web y aplicaciones locales a medida, seguras, en Buenos Aires.">
     <meta name="author" content="ByFoogles Visuals">
+    <meta name="theme-color" content="#04060a">
 
-    <!-- =========================================
-         OPEN GRAPH (PREVISUALIZACIÓN EN WHATSAPP)
-         ========================================= -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="ByFoogles Visuals">
     <meta property="og:title" content="ByFoogles Visuals | Fotografía y Desarrollo a Medida">
     <meta property="og:description" content="Fotografía profesional y desarrollo de sitios web, aplicaciones web y aplicaciones locales a medida, seguras, en Buenos Aires.">
     <meta property="og:url" content="https://www.byfooglesvisuals.com">
     <meta property="og:image" content="https://www.byfooglesvisuals.com/images/icono.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
 
-    <!-- Favicon (Ícono de pestaña) -->
-    <link rel="icon" type="image/png" href="images/icono.png">
+    <link rel="icon" type="image/png" href="img/icono.png">
 
-    <!-- Fonts & Iconos -->
+    <!-- Tipografías (no bloquean la carga) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
-    <!-- CSS Propio -->
-    <link rel="stylesheet" href="index.css">
+    <!-- Íconos: se cargan después del contenido para no frenar la página -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+
+    <!-- Marca que hay JS para activar las animaciones de aparición (sin JS todo se ve igual) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="efectos.js" defer></script>
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <header class="navbar-comercial">
-        <div class="nav-container">
-            <a href="#" class="brand-logo">ByFoogles <span>Visuals</span></a>
-            <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal">
-                <i class="fa-solid fa-bars"></i>
+    <!-- Barra de progreso de lectura -->
+    <div class="progreso" aria-hidden="true"></div>
+    <!-- Luz que sigue al mouse -->
+    <div class="luz-cursor" aria-hidden="true"></div>
+
+    <!-- ============ NAVBAR ============ -->
+    <header class="nav">
+        <div class="nav-caja">
+            <a href="#inicio" class="marca">ByFoogles <span>Visuals</span></a>
+            <button class="nav-boton" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+                <span></span><span></span>
             </button>
             <nav>
-                <ul class="nav-links" id="menu-principal">
+                <ul class="nav-links" id="menu">
                     <li><a href="#fotografia">Fotografía</a></li>
                     <li><a href="#desarrollo">Desarrollo</a></li>
                     <li><a href="#trabajos">Trabajos</a></li>
-                    <li><a href="#contacto" class="btn-nav">Cotizar</a></li>
+                    <li><a href="#faq">Preguntas</a></li>
+                    <li><a href="#contacto" class="nav-cta">Cotizar</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
-        <!-- HERO SECTION -->
-        <section class="hero-comercial">
-            <div class="hero-content">
-                <span class="hero-subtitle">Fotografía y Desarrollo en Gran Buenos Aires</span>
-                <h1>Fotografía Profesional y Software a Medida</h1>
-                <p>Imágenes de alto impacto para tu marca, y sitios web y aplicaciones simples, rápidas y seguras para tu negocio. Todo en un mismo lugar.</p>
-                <div class="hero-buttons">
-                    <a href="#fotografia" class="btn-primary">Fotografía</a>
-                    <a href="#desarrollo" class="btn-secondary">Desarrollo</a>
+        <!-- ============ HERO ============ -->
+        <section class="hero" id="inicio">
+            <canvas class="hero-particulas" aria-hidden="true"></canvas>
+            <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="hero-grilla" aria-hidden="true"></div>
+
+            <div class="hero-contenido">
+                <span class="pastilla"><span class="punto"></span> Fotografía y Desarrollo en Gran Buenos Aires</span>
+                <h1>
+                    <span class="linea"><span class="degradado degradado-foto">Fotografía profesional</span></span>
+                    <span class="linea">y <span class="degradado">Software a medida</span></span>
+                </h1>
+                <p class="hero-texto">
+                    Imágenes de alto impacto para tu marca, y
+                    <span class="escribe" data-palabras="sitios web rápidos|aplicaciones seguras|sistemas para tu negocio|fotos que venden">sitios web rápidos</span><span class="cursor-texto" aria-hidden="true">|</span>
+                    <br>Todo en un mismo lugar.
+                </p>
+                <div class="hero-botones">
+                    <a href="#fotografia" class="boton boton-principal magnetico"><i class="fa-solid fa-camera"></i> Fotografía</a>
+                    <a href="#desarrollo" class="boton boton-violeta magnetico"><i class="fa-solid fa-code"></i> Desarrollo</a>
                 </div>
             </div>
+
+            <a href="#fotografia" class="hero-bajar" aria-label="Bajar a Fotografía"><span></span></a>
         </section>
 
-        <!-- LÍNEA DE COLOR ANIMADA -->
-        <div class="animated-line"></div>
+        <!-- ============ CINTA DE SERVICIOS ============ -->
+        <div class="cinta" aria-hidden="true">
+            <div class="cinta-pista">
+                <span>Estudio &amp; Retrato</span><i>✦</i><span>Sitios Web</span><i>✦</i><span>Fotoproducto</span><i>✦</i><span>Aplicaciones Seguras</span><i>✦</i><span>Boliches &amp; Social</span><i>✦</i><span>Mantenimiento</span><i>✦</i><span>Eventos</span><i>✦</i><span>Contenido para Redes</span><i>✦</i>
+                <span>Estudio &amp; Retrato</span><i>✦</i><span>Sitios Web</span><i>✦</i><span>Fotoproducto</span><i>✦</i><span>Aplicaciones Seguras</span><i>✦</i><span>Boliches &amp; Social</span><i>✦</i><span>Mantenimiento</span><i>✦</i><span>Eventos</span><i>✦</i><span>Contenido para Redes</span><i>✦</i>
+            </div>
+        </div>
 
-        <!-- =========================================
-             BLOQUE 1: FOTOGRAFÍA
-             ========================================= -->
-        <section id="fotografia" class="services-section">
-            <span class="block-label"><i class="fa-solid fa-camera"></i> Fotografía</span>
-            <h2 class="section-title">Servicios de Fotografía</h2>
-            <p class="section-subtitle">Estudio, producto, contenido y eventos con dominio técnico de la luz.</p>
-            <div class="services-grid">
+        <!-- ============ FOTOGRAFÍA ============ -->
+        <section id="fotografia" class="seccion">
+            <div class="encabezado aparecer">
+                <span class="etiqueta"><i class="fa-solid fa-camera"></i> 01 — Fotografía</span>
+                <h2>Servicios de <span class="degradado">Fotografía</span></h2>
+                <p>Estudio, producto, contenido y eventos con dominio técnico de la luz.</p>
+            </div>
 
-                <!-- Servicio 1 -->
-                <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-camera-retro"></i></div>
-                    <h3>Estudio & Retrato</h3>
+            <div class="bento bento-foto">
+                <article class="tarjeta foco grande aparecer" style="--foto:url('img/7-mini.webp')">
+                    <div class="tarjeta-foto" aria-hidden="true"></div>
+                    <div class="tarjeta-icono"><i class="fa-solid fa-camera-retro"></i></div>
+                    <h3>Estudio &amp; Retrato</h3>
                     <p>Fotografía editorial, personal y artística. Manejo de iluminación de precisión, esquemas de luz complejos y dirección de pose en estudio.</p>
-                </div>
-
-                <!-- Servicio 2 -->
-                <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-box-open"></i></div>
-                    <h3>Fotoproducto & Bodegón</h3>
+                </article>
+                <article class="tarjeta foco aparecer">
+                    <div class="tarjeta-icono"><i class="fa-solid fa-box-open"></i></div>
+                    <h3>Fotoproducto &amp; Bodegón</h3>
                     <p>Imágenes comerciales para marcas y emprendimientos. Destacamos texturas, detalles y estética de producto con iluminación técnica.</p>
-                </div>
-
-                <!-- Servicio 3 -->
-                <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-bolt"></i></div>
+                </article>
+                <article class="tarjeta foco aparecer">
+                    <div class="tarjeta-icono"><i class="fa-solid fa-bolt"></i></div>
                     <h3>Contenido Creativo para Redes</h3>
                     <p>Propuestas visuales con identidad propia: uso de flashes, filtros de color (celofanes), estética neón y ambiental para creadores de contenido.</p>
-                </div>
-
-                <!-- Servicio 4: Social / Boliches -->
-                <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-martini-glass-citrus"></i></div>
-                    <h3>Social & Boliches</h3>
+                </article>
+                <article class="tarjeta foco aparecer">
+                    <div class="tarjeta-icono"><i class="fa-solid fa-martini-glass-citrus"></i></div>
+                    <h3>Social &amp; Boliches</h3>
                     <p>Fotografía nocturna, boliches y fiestas. Captura de la energía de la noche, movimiento de pista, iluminación del lugar y retratos espontáneos al paso.</p>
-                </div>
-
-                <!-- Servicio 5: Eventos Generales -->
-                <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
-                    <h3>Eventos & Celebraciones</h3>
+                </article>
+                <article class="tarjeta foco aparecer">
+                    <div class="tarjeta-icono"><i class="fa-solid fa-champagne-glasses"></i></div>
+                    <h3>Eventos &amp; Celebraciones</h3>
                     <p>Cobertura integral para eventos corporativos, presentaciones, cumpleaños y reuniones. Registro documental de momentos clave, invitados y ambientación.</p>
-                </div>
+                </article>
+            </div>
 
+            <div class="valores aparecer">
+                <div class="valor"><i class="fa-solid fa-stopwatch"></i><div><h4>Entrega Ágil</h4><p>Tiempos de entrega optimizados para que dispongas del material listo para publicar.</p></div></div>
+                <div class="valor"><i class="fa-solid fa-sliders"></i><div><h4>Edición Dedicada</h4><p>Tratamiento de color profesional y retoque meticuloso adaptado a cada proyecto.</p></div></div>
+                <div class="valor"><i class="fa-solid fa-lightbulb"></i><div><h4>Dominio de Luz</h4><p>Especialista en ambientes complejos: desde bajas luces nocturnas hasta esquemas de estudio.</p></div></div>
             </div>
         </section>
 
-        <!-- VALOR AGREGADO FOTOGRAFÍA -->
-        <section class="features-section">
-            <div class="features-container">
-                <div class="feature-box">
-                    <i class="fa-solid fa-stopwatch"></i>
-                    <h4>Entrega Ágil</h4>
-                    <p>Tiempos de entrega optimizados para que dispongas del material listo para publicar.</p>
-                </div>
-                <div class="feature-box">
-                    <i class="fa-solid fa-sliders"></i>
-                    <h4>Edición Dedicada</h4>
-                    <p>Tratamiento de color profesional y retoque meticuloso adaptado a cada proyecto.</p>
-                </div>
-                <div class="feature-box">
-                    <i class="fa-solid fa-lightbulb"></i>
-                    <h4>Dominio de Luz</h4>
-                    <p>Especialista en ambientes complejos: desde bajas luces nocturnas hasta esquemas de estudio.</p>
-                </div>
+        <!-- ============ DESARROLLO ============ -->
+        <section id="desarrollo" class="seccion">
+            <div class="encabezado aparecer">
+                <span class="etiqueta"><i class="fa-solid fa-code"></i> 02 — Desarrollo</span>
+                <h2>Diseño y Desarrollo <span class="degradado">a Medida</span></h2>
+                <p>Herramientas digitales simples de usar, pensadas para tu negocio y construidas con la seguridad como prioridad.</p>
             </div>
-        </section>
 
-        <!-- =========================================
-             BLOQUE 2: DESARROLLO
-             ========================================= -->
-        <section id="desarrollo" class="services-section">
-            <span class="block-label"><i class="fa-solid fa-code"></i> Desarrollo</span>
-            <h2 class="section-title">Diseño y Desarrollo a Medida</h2>
-            <p class="section-subtitle">Herramientas digitales simples de usar, pensadas para tu negocio y construidas con la seguridad como prioridad.</p>
-            <div class="services-grid">
+            <div class="bento bento-dev">
+                <!-- Terminal animada -->
+                <article class="tarjeta terminal aparecer" aria-label="Controles de seguridad de un sistema">
+                    <div class="terminal-barra"><span></span><span></span><span></span><em>seguridad.sh</em></div>
+                    <pre class="terminal-texto" data-lineas='["$ revisar-seguridad --sistema tu-negocio","✓ Contraseñas protegidas","✓ Verificación en dos pasos","✓ Permisos por rol","✓ Conexiones cifradas","✓ Registro de accesos con alertas","✓ Respaldos cifrados automáticos","→ Sistema listo para usar"]'></pre>
+                </article>
 
-                <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-desktop"></i></div>
+                <article class="tarjeta foco aparecer">
+                    <div class="tarjeta-icono"><i class="fa-solid fa-desktop"></i></div>
                     <h3>Sitios Web</h3>
                     <p>Diseño y desarrollo de sitios para marcas, comercios y profesionales. Rápidos, adaptados a celulares, con formulario de contacto anti-spam y listos para aparecer en buscadores.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-user-shield"></i></div>
+                </article>
+                <article class="tarjeta foco aparecer">
+                    <div class="tarjeta-icono"><i class="fa-solid fa-user-shield"></i></div>
                     <h3>Aplicaciones Web Seguras</h3>
                     <p>Sistemas simples para gestionar turnos, clientes, pedidos o stock desde el navegador. Accesos con usuario y contraseña, verificación en dos pasos y permisos por rol.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                </article>
+                <article class="tarjeta foco aparecer">
+                    <div class="tarjeta-icono"><i class="fa-solid fa-laptop-code"></i></div>
                     <h3>Aplicaciones Locales a Medida</h3>
                     <p>Programas que funcionan en las computadoras de tu negocio, sin depender de internet ni de servicios externos. Tus datos quedan en tu equipo, con respaldos cifrados.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                </article>
+                <article class="tarjeta foco aparecer">
+                    <div class="tarjeta-icono"><i class="fa-solid fa-screwdriver-wrench"></i></div>
                     <h3>Mantenimiento Mensual</h3>
                     <p>Actualizaciones de seguridad, control de respaldos, ajustes y soporte por un abono mensual, para que el sistema siga funcionando bien con el tiempo.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
-                    <h3>Instalación & Capacitación</h3>
+                </article>
+                <article class="tarjeta foco aparecer">
+                    <div class="tarjeta-icono"><i class="fa-solid fa-chalkboard-user"></i></div>
+                    <h3>Instalación &amp; Capacitación</h3>
                     <p>Instalo el sistema en tus equipos, lo dejo configurado y le enseño a tu equipo a usarlo paso a paso, con una guía simple para consultar después.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-camera"></i><i class="fa-solid fa-plus service-icon-plus"></i><i class="fa-solid fa-code"></i></div>
+                </article>
+                <article class="tarjeta foco combo aparecer">
+                    <div class="tarjeta-icono doble"><i class="fa-solid fa-camera"></i><b>+</b><i class="fa-solid fa-code"></i></div>
                     <h3>Sitio Web + Fotos</h3>
                     <p>El combo completo: tu sitio web con fotos profesionales de tus productos, tu local o tu equipo incluidas. Una imagen coherente de punta a punta.</p>
-                </div>
-
+                </article>
             </div>
 
-            <!-- TECNOLOGÍAS -->
-            <div class="tech-line">
-                <span>Tecnologías</span>
+            <div class="tecnologias aparecer">
+                <span class="tecnologias-titulo">Tecnologías</span>
                 <ul>
                     <li>HTML &amp; CSS</li>
                     <li>JavaScript / TypeScript</li>
@@ -196,324 +192,241 @@
                     <li>PostgreSQL</li>
                 </ul>
             </div>
-        </section>
 
-        <!-- VALOR AGREGADO DESARROLLO -->
-        <section class="features-section">
-            <div class="features-container">
-                <div class="feature-box">
-                    <i class="fa-solid fa-lock"></i>
-                    <h4>Seguridad Primero</h4>
-                    <p>Contraseñas protegidas, verificación en dos pasos, conexiones cifradas y registro de accesos.</p>
-                </div>
-                <div class="feature-box">
-                    <i class="fa-solid fa-hand-pointer"></i>
-                    <h4>Simple de Usar</h4>
-                    <p>Pantallas claras con lo que tu negocio necesita, sin funciones de más ni curva de aprendizaje.</p>
-                </div>
-                <div class="feature-box">
-                    <i class="fa-solid fa-database"></i>
-                    <h4>Tus Datos, Tuyos</h4>
-                    <p>La información de tu negocio es tuya, con respaldos cifrados y sin integraciones innecesarias.</p>
-                </div>
+            <div class="valores aparecer">
+                <div class="valor"><i class="fa-solid fa-lock"></i><div><h4>Seguridad Primero</h4><p>Contraseñas protegidas, verificación en dos pasos, conexiones cifradas y registro de accesos.</p></div></div>
+                <div class="valor"><i class="fa-solid fa-hand-pointer"></i><div><h4>Simple de Usar</h4><p>Pantallas claras con lo que tu negocio necesita, sin funciones de más ni curva de aprendizaje.</p></div></div>
+                <div class="valor"><i class="fa-solid fa-database"></i><div><h4>Tus Datos, Tuyos</h4><p>La información de tu negocio es tuya, con respaldos cifrados y sin integraciones innecesarias.</p></div></div>
             </div>
         </section>
 
-        <!-- =========================================
-             TRABAJOS DESTACADOS
-             ========================================= -->
-        <section id="trabajos" class="gallery-section">
-            <h2 class="section-title">Trabajos Destacados</h2>
-            <p class="section-subtitle">Una muestra rápida de fotografía y de proyectos de desarrollo.</p>
+        <!-- ============ CÓMO TRABAJO ============ -->
+        <section class="seccion proceso-seccion">
+            <div class="encabezado aparecer">
+                <span class="etiqueta"><i class="fa-solid fa-route"></i> 03 — Cómo trabajo</span>
+                <h2>De la idea a <span class="degradado">funcionando</span></h2>
+                <p>Así es un proyecto de desarrollo, paso a paso.</p>
+            </div>
+            <ol class="proceso">
+                <li class="paso aparecer"><span class="paso-num">1</span><h4>Consulta</h4><p>Me contás qué necesita tu negocio y qué querés resolver.</p></li>
+                <li class="paso aparecer"><span class="paso-num">2</span><h4>Propuesta</h4><p>Te envío la propuesta con el plazo exacto por escrito: 1 a 2 semanas un sitio, 3 a 6 una aplicación.</p></li>
+                <li class="paso aparecer"><span class="paso-num">3</span><h4>Desarrollo</h4><p>Con el 50% inicial arranco a construir, con la seguridad pensada desde el principio.</p></li>
+                <li class="paso aparecer"><span class="paso-num">4</span><h4>Entrega</h4><p>Lo dejo publicado o instalado, capacito a tu equipo y se abona el 50% restante.</p></li>
+                <li class="paso aparecer"><span class="paso-num">5</span><h4>Mantenimiento</h4><p>Si lo contratás, actualizaciones, respaldos y soporte mes a mes.</p></li>
+            </ol>
+        </section>
 
-            <!-- Subbloque: Fotografía -->
-            <h3 class="works-subtitle"><i class="fa-solid fa-camera"></i> Fotografía</h3>
-            <div class="compact-gallery">
-                <div class="gallery-item"><img src="images/1.jpg" alt="Trabajo de fotografía 1" loading="lazy"></div>
-                <div class="gallery-item"><img src="images/2.jpg" alt="Trabajo de fotografía 2" loading="lazy"></div>
-                <div class="gallery-item"><img src="images/3.jpg" alt="Trabajo de fotografía 3" loading="lazy"></div>
-                <div class="gallery-item"><img src="images/4.jpg" alt="Trabajo de fotografía 4" loading="lazy"></div>
-                <div class="gallery-item"><img src="images/5.jpg" alt="Trabajo de fotografía 5" loading="lazy"></div>
-                <div class="gallery-item"><img src="images/6.jpg" alt="Trabajo de fotografía 6" loading="lazy"></div>
-                <div class="gallery-item"><img src="images/7.jpg" alt="Trabajo de fotografía 7" loading="lazy"></div>
-                <div class="gallery-item"><img src="images/8.jpg" alt="Trabajo de fotografía 8" loading="lazy"></div>
-                <div class="gallery-item"><img src="images/9.jpg" alt="Trabajo de fotografía 9" loading="lazy"></div>
-                <div class="gallery-item"><img src="images/10.jpg" alt="Trabajo de fotografía 10" loading="lazy"></div>
-                <div class="gallery-item"><img src="images/11.jpg" alt="Trabajo de fotografía 11" loading="lazy"></div>
-                <div class="gallery-item"><img src="images/12.jpg" alt="Trabajo de fotografía 12" loading="lazy"></div>
-                <div class="gallery-item"><img src="images/13.jpg" alt="Trabajo de fotografía 13" loading="lazy"></div>
-                <div class="gallery-item"><img src="images/14.jpg" alt="Trabajo de fotografía 14" loading="lazy"></div>
-                <div class="gallery-item"><img src="images/15.jpg" alt="Trabajo de fotografía 15" loading="lazy"></div>
-                <div class="gallery-item"><img src="images/16.jpg" alt="Trabajo de fotografía 16" loading="lazy"></div>
+        <!-- ============ TRABAJOS ============ -->
+        <section id="trabajos" class="seccion">
+            <div class="encabezado aparecer">
+                <span class="etiqueta"><i class="fa-solid fa-star"></i> 04 — Trabajos</span>
+                <h2>Trabajos <span class="degradado">Destacados</span></h2>
+                <p>Una muestra rápida de fotografía y de proyectos de desarrollo.</p>
             </div>
 
-            <!-- LINK A TU PORTFOLIO DE AUTOR -->
-            <div class="portfolio-banner">
+            <h3 class="subtitulo aparecer"><i class="fa-solid fa-camera"></i> Fotografía</h3>
+            <div class="galeria">
+                <!-- Miniaturas livianas (≈20–50 KB); al tocar se abre la versión grande -->
+                <figure class="foto aparecer"><img src="img/1-mini.webp" data-grande="img/1.webp" width="533" height="800" alt="Trabajo de fotografía 1" loading="lazy" decoding="async"></figure>
+                <figure class="foto aparecer"><img src="img/13-mini.webp" data-grande="img/13.webp" width="800" height="533" alt="Trabajo de fotografía 13" loading="lazy" decoding="async"></figure>
+                <figure class="foto aparecer"><img src="img/2-mini.webp" data-grande="img/2.webp" width="476" height="800" alt="Trabajo de fotografía 2" loading="lazy" decoding="async"></figure>
+                <figure class="foto aparecer"><img src="img/3-mini.webp" data-grande="img/3.webp" width="533" height="800" alt="Trabajo de fotografía 3" loading="lazy" decoding="async"></figure>
+                <figure class="foto aparecer"><img src="img/14-mini.webp" data-grande="img/14.webp" width="800" height="533" alt="Trabajo de fotografía 14" loading="lazy" decoding="async"></figure>
+                <figure class="foto aparecer"><img src="img/4-mini.webp" data-grande="img/4.webp" width="510" height="800" alt="Trabajo de fotografía 4" loading="lazy" decoding="async"></figure>
+                <figure class="foto aparecer"><img src="img/5-mini.webp" data-grande="img/5.webp" width="589" height="800" alt="Trabajo de fotografía 5" loading="lazy" decoding="async"></figure>
+                <figure class="foto aparecer"><img src="img/6-mini.webp" data-grande="img/6.webp" width="589" height="800" alt="Trabajo de fotografía 6" loading="lazy" decoding="async"></figure>
+                <figure class="foto aparecer"><img src="img/15-mini.webp" data-grande="img/15.webp" width="800" height="533" alt="Trabajo de fotografía 15" loading="lazy" decoding="async"></figure>
+                <figure class="foto aparecer"><img src="img/7-mini.webp" data-grande="img/7.webp" width="502" height="800" alt="Trabajo de fotografía 7" loading="lazy" decoding="async"></figure>
+                <figure class="foto aparecer"><img src="img/8-mini.webp" data-grande="img/8.webp" width="449" height="800" alt="Trabajo de fotografía 8" loading="lazy" decoding="async"></figure>
+                <figure class="foto aparecer"><img src="img/9-mini.webp" data-grande="img/9.webp" width="533" height="800" alt="Trabajo de fotografía 9" loading="lazy" decoding="async"></figure>
+                <figure class="foto aparecer"><img src="img/16-mini.webp" data-grande="img/16.webp" width="800" height="533" alt="Trabajo de fotografía 16" loading="lazy" decoding="async"></figure>
+                <figure class="foto aparecer"><img src="img/10-mini.webp" data-grande="img/10.webp" width="533" height="800" alt="Trabajo de fotografía 10" loading="lazy" decoding="async"></figure>
+                <figure class="foto aparecer"><img src="img/11-mini.webp" data-grande="img/11.webp" width="533" height="800" alt="Trabajo de fotografía 11" loading="lazy" decoding="async"></figure>
+                <figure class="foto aparecer"><img src="img/12-mini.webp" data-grande="img/12.webp" width="533" height="800" alt="Trabajo de fotografía 12" loading="lazy" decoding="async"></figure>
+            </div>
+
+            <div class="portfolio-banner aparecer">
                 <p>¿Querés explorar mi visión más artística y proyectos completos?</p>
-                <a href="https://www.byfooglesframes.com" class="btn-portfolio" target="_blank" rel="noopener">Ver Portfolio Conceptual (ByFooglesFrames) <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="https://www.byfooglesframes.com" class="boton boton-vidrio magnetico" target="_blank" rel="noopener">Ver Portfolio Conceptual (ByFooglesFrames) <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
 
-            <!-- Subbloque: Desarrollo -->
-            <h3 class="works-subtitle works-subtitle-dev"><i class="fa-solid fa-code"></i> Desarrollo</h3>
-            <div class="projects-grid">
-
-                <!-- Proyecto 1: CRM -->
-                <article class="project-card">
-                    <div class="project-shots">
-                        <div class="project-shot project-shot-main"><img src="images/proyectos/crm-agenda.jpg" alt="Agenda semanal del sistema de gestión para estudio fotográfico" loading="lazy"></div>
-                        <div class="project-shot"><img src="images/proyectos/crm-proyectos.jpg" alt="Lista de proyectos con su estado" loading="lazy"></div>
-                        <div class="project-shot"><img src="images/proyectos/crm-login.jpg" alt="Pantalla de ingreso con verificación en dos pasos" loading="lazy"></div>
+            <h3 class="subtitulo aparecer"><i class="fa-solid fa-code"></i> Desarrollo</h3>
+            <div class="proyectos">
+                <article class="proyecto inclinar aparecer">
+                    <div class="proyecto-capturas">
+                        <img class="captura-principal" src="img/crm-agenda.webp" width="1200" height="750" alt="Agenda semanal del sistema de gestión para estudio fotográfico" loading="lazy" decoding="async">
+                        <img src="img/crm-proyectos.webp" width="1200" height="750" alt="Lista de proyectos con su estado" loading="lazy" decoding="async">
+                        <img src="img/crm-login.webp" width="1200" height="750" alt="Pantalla de ingreso con verificación en dos pasos" loading="lazy" decoding="async">
                     </div>
-                    <div class="project-body">
-                        <span class="project-type">Aplicación web</span>
+                    <div class="proyecto-cuerpo">
+                        <span class="proyecto-tipo">Aplicación web</span>
                         <h4>Gestión y Agenda para Estudio Fotográfico</h4>
                         <p>Sistema propio para organizar el trabajo de un estudio: agenda semanal de sesiones, proyectos, clientes, colaboradores, cobros y honorarios. Los clientes pueden pedir turnos desde la web.</p>
-                        <ul class="project-features">
+                        <ul class="checks">
                             <li><i class="fa-solid fa-check"></i> Verificación en dos pasos y permisos por rol</li>
                             <li><i class="fa-solid fa-check"></i> Registro de accesos con alertas</li>
                             <li><i class="fa-solid fa-check"></i> Respaldos cifrados automáticos</li>
                         </ul>
-                        <p class="project-note">Capturas con datos de ejemplo.</p>
+                        <p class="nota">Capturas con datos de ejemplo.</p>
                     </div>
                 </article>
 
-                <!-- Proyecto 2: Portfolio -->
-                <article class="project-card">
-                    <div class="project-shots">
-                        <div class="project-shot project-shot-main project-shot-solo"><img src="images/proyectos/portfolio.jpg" alt="Galería por categorías del portfolio ByFooglesFrames" loading="lazy"></div>
+                <article class="proyecto inclinar aparecer">
+                    <div class="proyecto-capturas solo">
+                        <img class="captura-principal" src="img/portfolio.webp" width="1200" height="1125" alt="Galería por categorías del portfolio ByFooglesFrames" loading="lazy" decoding="async">
                     </div>
-                    <div class="project-body">
-                        <span class="project-type">Sitio web</span>
+                    <div class="proyecto-cuerpo">
+                        <span class="proyecto-tipo">Sitio web</span>
                         <h4>Portfolio Fotográfico ByFooglesFrames</h4>
                         <p>Sitio de autor con galería por categorías, pensado para que las fotos sean las protagonistas: diseño minimalista, carga rápida y buena lectura en celulares.</p>
-                        <ul class="project-features">
+                        <ul class="checks">
                             <li><i class="fa-solid fa-check"></i> Diseño a medida, sin plantillas</li>
                             <li><i class="fa-solid fa-check"></i> Optimizado para celulares</li>
                         </ul>
-                        <a href="https://www.byfooglesframes.com" class="btn-portfolio" target="_blank" rel="noopener">Visitar sitio <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <a href="https://www.byfooglesframes.com" class="enlace-flecha" target="_blank" rel="noopener">Visitar sitio <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </article>
-
             </div>
         </section>
 
-        <!-- CONTACTO & FORMULARIO -->
-        <section id="contacto" class="contact-section">
-            <div class="contact-container">
+        <!-- ============ CONTACTO ============ -->
+        <section id="contacto" class="seccion contacto">
+            <div class="contacto-info aparecer">
+                <span class="etiqueta"><i class="fa-solid fa-paper-plane"></i> 05 — Contacto</span>
+                <h2>Hablemos de tu <span class="degradado">proyecto</span></h2>
+                <p>Contame qué necesitás: una sesión de fotos, un sitio web o un sistema para tu negocio. Te respondo con una propuesta a la brevedad.</p>
 
-                <div class="contact-info">
-                    <h2>Hablemos de tu proyecto</h2>
-                    <p>Contame qué necesitás: una sesión de fotos, un sitio web o un sistema para tu negocio. Te respondo con una propuesta a la brevedad.</p>
+                <div class="canales">
+                    <a href="https://wa.me/5491135634438?text=Hola!%20Vi%20tu%20web%20ByFoogles%20Visuals%20y%20quisiera%20consultar%20por%20un%20presupuesto." target="_blank" rel="noopener" class="canal foco">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <div><span>WhatsApp Business</span><strong>¡Escribime un mensaje!</strong></div>
+                    </a>
+                    <a href="https://instagram.com/byfoogles.frames" target="_blank" rel="noopener" class="canal foco">
+                        <i class="fa-brands fa-instagram"></i>
+                        <div><span>Mensaje directo</span><strong>byfoogles.frames</strong></div>
+                    </a>
+                    <a href="mailto:byfooglesframes@gmail.com" class="canal foco">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div><span>Correo electrónico</span><strong>byfooglesframes@gmail.com</strong></div>
+                    </a>
+                </div>
+                <p class="contacto-nota">Contamos con precios accesibles a la medida de tu proyecto. ¡No dudes en realizar tu consulta! Estaremos encantados de responderte.</p>
+            </div>
 
-                    <div class="direct-channels">
-                        <a href="https://wa.me/5491135634438?text=Hola!%20Vi%20tu%20web%20ByFoogles%20Visuals%20y%20quisiera%20consultar%20por%20un%20presupuesto." target="_blank" rel="noopener" class="channel-card">
-                            <i class="fa-brands fa-whatsapp"></i>
-                            <div>
-                                <span>WhatsApp Business</span>
-                                <strong>¡Escribime un mensaje!</strong>
-                            </div>
-                        </a>
-                        <a href="https://instagram.com/byfoogles.frames" target="_blank" rel="noopener" class="channel-card">
-                            <i class="fa-brands fa-instagram"></i>
-                            <div>
-                                <span>Mensaje directo</span>
-                                <strong>byfoogles.frames</strong>
-                            </div>
-                        </a>
+            <div class="formulario-marco aparecer">
+                <form action="https://api.web3forms.com/submit" method="POST" class="formulario">
+                    <input type="hidden" name="access_key" value="f0caa77a-6e5a-47d6-b81d-91ac5f0a0f9a">
+                    <input type="hidden" name="subject" value="Nueva consulta de Cotización - ByFoogles Visuals">
+                    <input type="checkbox" name="botcheck" style="display: none;" tabindex="-1" autocomplete="off">
 
-                        <a href="mailto:byfooglesframes@gmail.com" class="channel-card">
-                            <i class="fa-solid fa-envelope"></i>
-                            <div>
-                                <span>Correo electrónico</span>
-                                <strong>byfooglesframes@gmail.com</strong>
-                            </div>
-                        </a>
-
-                        <p>Contamos con precios accesibles a la medida de tu proyecto. ¡No dudes en realizar tu consulta! <br> <br> Estaremos encantados de responder tu consulta.</p>
-
+                    <div class="campo">
+                        <input type="text" id="name" name="name" placeholder=" " required>
+                        <label for="name">Nombre / Marca</label>
                     </div>
-                </div>
-
-                <!-- FORMULARIO ANTI-SPAM (Web3Forms) -->
-                <div class="contact-form-wrapper">
-                    <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
-
-                        <input type="hidden" name="access_key" value="f0caa77a-6e5a-47d6-b81d-91ac5f0a0f9a">
-                        <input type="hidden" name="subject" value="Nueva consulta de Cotización - ByFoogles Visuals">
-
-                        <!-- Anti-spam Honeypot (Oculto para humanos) -->
-                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
-                        <div class="form-group">
-                            <label for="name">Nombre / Marca</label>
-                            <input type="text" id="name" name="name" placeholder="Tu nombre o empresa" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email de Contacto</label>
-                            <input type="email" id="email" name="email" placeholder="tu@email.com" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="service">Servicio de interés</label>
-                            <select id="service" name="service" required>
-                                <option value="" disabled selected>Seleccioná una opción</option>
-                                <optgroup label="Fotografía">
-                                    <option value="Estudio / Retrato">Estudio / Retrato</option>
-                                    <option value="Fotoproducto / Bodegón">Fotoproducto / Bodegón</option>
-                                    <option value="Eventos / Celebraciones">Eventos / Celebraciones</option>
-                                    <option value="Contenido para Redes">Contenido para Redes</option>
-                                    <option value="Social / Boliche">Social / Boliche</option>
-                                </optgroup>
-                                <optgroup label="Desarrollo">
-                                    <option value="Sitio web">Sitio web</option>
-                                    <option value="Aplicación web">Aplicación web</option>
-                                    <option value="Aplicación local a medida">Aplicación local a medida</option>
-                                    <option value="Mantenimiento de un sistema">Mantenimiento de un sistema</option>
-                                    <option value="Sitio web + fotos">Sitio web + fotos</option>
-                                </optgroup>
-                                <option value="Otro / Consulta general">Otro / Consulta general</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Detalles del proyecto</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Fecha estimada, idea del proyecto, qué querés resolver en tu negocio..." required></textarea>
-                        </div>
-
-                        <button type="submit" class="btn-submit">Enviar Consulta</button>
-                    </form>
-                </div>
-
+                    <div class="campo">
+                        <input type="email" id="email" name="email" placeholder=" " required>
+                        <label for="email">Email de Contacto</label>
+                    </div>
+                    <div class="campo campo-select">
+                        <select id="service" name="service" required>
+                            <option value="" disabled selected>Seleccioná una opción</option>
+                            <optgroup label="Fotografía">
+                                <option value="Estudio / Retrato">Estudio / Retrato</option>
+                                <option value="Fotoproducto / Bodegón">Fotoproducto / Bodegón</option>
+                                <option value="Eventos / Celebraciones">Eventos / Celebraciones</option>
+                                <option value="Contenido para Redes">Contenido para Redes</option>
+                                <option value="Social / Boliche">Social / Boliche</option>
+                            </optgroup>
+                            <optgroup label="Desarrollo">
+                                <option value="Sitio web">Sitio web</option>
+                                <option value="Aplicación web">Aplicación web</option>
+                                <option value="Aplicación local a medida">Aplicación local a medida</option>
+                                <option value="Mantenimiento de un sistema">Mantenimiento de un sistema</option>
+                                <option value="Sitio web + fotos">Sitio web + fotos</option>
+                            </optgroup>
+                            <option value="Otro / Consulta general">Otro / Consulta general</option>
+                        </select>
+                        <label for="service" class="fija">Servicio de interés</label>
+                    </div>
+                    <div class="campo">
+                        <textarea id="message" name="message" rows="4" placeholder=" " required></textarea>
+                        <label for="message">Detalles del proyecto</label>
+                    </div>
+                    <button type="submit" class="boton boton-principal boton-enviar magnetico">Enviar Consulta <i class="fa-solid fa-arrow-right"></i></button>
+                </form>
             </div>
         </section>
 
-        <!-- PREGUNTAS FRECUENTES (FAQ) -->
-        <section id="faq" class="faq-section">
-            <h2 class="section-title">Preguntas Frecuentes</h2>
-            <p class="section-subtitle">Respuestas a las dudas más habituales sobre contratación y metodología de trabajo.</p>
+        <!-- ============ PREGUNTAS FRECUENTES ============ -->
+        <section id="faq" class="seccion">
+            <div class="encabezado aparecer">
+                <span class="etiqueta"><i class="fa-solid fa-circle-question"></i> 06 — Preguntas</span>
+                <h2>Preguntas <span class="degradado">Frecuentes</span></h2>
+                <p>Respuestas a las dudas más habituales sobre contratación y metodología de trabajo.</p>
+            </div>
 
-            <h3 class="faq-group-title"><i class="fa-solid fa-camera"></i> Fotografía</h3>
-            <div class="faq-container">
+            <div class="pestanas aparecer" role="tablist">
+                <button class="pestana activa" role="tab" aria-selected="true" aria-controls="faq-foto" id="tab-foto"><i class="fa-solid fa-camera"></i> Fotografía</button>
+                <button class="pestana" role="tab" aria-selected="false" aria-controls="faq-dev" id="tab-dev"><i class="fa-solid fa-code"></i> Desarrollo</button>
+                <span class="pestana-indicador" aria-hidden="true"></span>
+            </div>
 
+            <div class="faq" id="faq-foto" role="tabpanel" aria-labelledby="tab-foto">
                 <details class="faq-item">
-                    <summary class="faq-question">
-                        <span>¿Con cuánta anticipación debo reservar una fecha?</span>
-                        <i class="fa-solid fa-chevron-down faq-icon"></i>
-                    </summary>
-                    <div class="faq-answer">
-                        <p>Para eventos formales, eventos sociales y fotografía de productos se recomienda reservar con al menos 2 a 3 semanas de anticipación para congelar la fecha. Para sesiones de estudio, podemos coordinar con 5 a 7 días de margen dependiendo de la disponibilidad del Estudio contratado.</p>
-                    </div>
+                    <summary>¿Con cuánta anticipación debo reservar una fecha?</summary>
+                    <div class="faq-respuesta"><p>Para eventos formales, eventos sociales y fotografía de productos se recomienda reservar con al menos 2 a 3 semanas de anticipación para congelar la fecha. Para sesiones de estudio, podemos coordinar con 5 a 7 días de margen dependiendo de la disponibilidad del Estudio contratado.</p></div>
                 </details>
-
                 <details class="faq-item">
-                    <summary class="faq-question">
-                        <span>¿Cuánto tardan en entregarse las fotografías editadas?</span>
-                        <i class="fa-solid fa-chevron-down faq-icon"></i>
-                    </summary>
-                    <div class="faq-answer">
-                        <p>El tiempo promedio de entrega es de 3 a 5 días hábiles para eventos o coberturas, y de 1 a 3 días hábiles para sesiones de estudio con edición personalizada. Si precisás material urgente, se realizará una recarga del 10% del precio acordado.</p>
-                    </div>
+                    <summary>¿Cuánto tardan en entregarse las fotografías editadas?</summary>
+                    <div class="faq-respuesta"><p>El tiempo promedio de entrega es de 3 a 5 días hábiles para eventos o coberturas, y de 1 a 3 días hábiles para sesiones de estudio con edición personalizada. Si precisás material urgente, se realizará una recarga del 10% del precio acordado.</p></div>
                 </details>
-
                 <details class="faq-item">
-                    <summary class="faq-question">
-                        <span>¿Cómo es la modalidad de pago y reserva?</span>
-                        <i class="fa-solid fa-chevron-down faq-icon"></i>
-                    </summary>
-                    <div class="faq-answer">
+                    <summary>¿Cómo es la modalidad de pago y reserva?</summary>
+                    <div class="faq-respuesta">
                         <p>Varía según el tipo de servicio:</p>
-                        <ul class="faq-list">
+                        <ul>
                             <li><strong>Estudio externo:</strong> Se solicita una seña destinada a cubrir la reserva del espacio (el monto exacto se acuerda con el cliente según el estudio a contratar).</li>
                             <li><strong>Estudio propio:</strong> La reserva se realiza con un 20% mediante transferencia. El saldo restante se abona en la fecha estipulada, pudiendo ser por transferencia o efectivo sin problemas.</li>
                             <li><strong>Eventos formales y sociales:</strong> Se congelan precio y agenda con una seña del 30% del valor acordado, abonada exclusivamente por transferencia a Mercado Pago. El 70% restante se completa el día del evento o antes de la entrega del material.</li>
                         </ul>
                     </div>
                 </details>
-
                 <details class="faq-item">
-                    <summary class="faq-question">
-                        <span>¿Entregan todas las fotos originales sin editar (RAW)?</span>
-                        <i class="fa-solid fa-chevron-down faq-icon"></i>
-                    </summary>
-                    <div class="faq-answer">
-                        <p>No entregamos archivos RAW o sin procesar. Parte de la identidad técnica y artística del servicio radica en la selección cuidadosa, revelado digital y tratamiento de color profesional. Recibirás todo el paquete acordado en alta resolución (JPG en máxima calidad) listo para publicar o imprimir.</p>
-                    </div>
+                    <summary>¿Entregan todas las fotos originales sin editar (RAW)?</summary>
+                    <div class="faq-respuesta"><p>No entregamos archivos RAW o sin procesar. Parte de la identidad técnica y artística del servicio radica en la selección cuidadosa, revelado digital y tratamiento de color profesional. Recibirás todo el paquete acordado en alta resolución (JPG en máxima calidad) listo para publicar o imprimir.</p></div>
                 </details>
-
                 <details class="faq-item">
-                    <summary class="faq-question">
-                        <span>¿Te desplazás a otras zonas fuera de GBA o CABA?</span>
-                        <i class="fa-solid fa-chevron-down faq-icon"></i>
-                    </summary>
-                    <div class="faq-answer">
-                        <p>Sí, cubrimos preferentemente eventos en CABA y Gran Buenos Aires. En caso de requerir traslados fuera del área habitual, se suma el ítem de viáticos al presupuesto final.</p>
-                    </div>
+                    <summary>¿Te desplazás a otras zonas fuera de GBA o CABA?</summary>
+                    <div class="faq-respuesta"><p>Sí, cubrimos preferentemente eventos en CABA y Gran Buenos Aires. En caso de requerir traslados fuera del área habitual, se suma el ítem de viáticos al presupuesto final.</p></div>
                 </details>
-
             </div>
 
-            <h3 class="faq-group-title"><i class="fa-solid fa-code"></i> Desarrollo</h3>
-            <div class="faq-container">
-
+            <div class="faq" id="faq-dev" role="tabpanel" aria-labelledby="tab-dev" hidden>
                 <details class="faq-item">
-                    <summary class="faq-question">
-                        <span>¿Cuánto tarda en estar listo un sitio o una aplicación?</span>
-                        <i class="fa-solid fa-chevron-down faq-icon"></i>
-                    </summary>
-                    <div class="faq-answer">
-                        <p>Un sitio web simple suele estar listo en 1 a 2 semanas. Una aplicación web o local a medida lleva entre 3 y 6 semanas, según lo que necesite tu negocio. El plazo exacto queda escrito en la propuesta antes de empezar.</p>
-                    </div>
+                    <summary>¿Cuánto tarda en estar listo un sitio o una aplicación?</summary>
+                    <div class="faq-respuesta"><p>Un sitio web simple suele estar listo en 1 a 2 semanas. Una aplicación web o local a medida lleva entre 3 y 6 semanas, según lo que necesite tu negocio. El plazo exacto queda escrito en la propuesta antes de empezar.</p></div>
                 </details>
-
                 <details class="faq-item">
-                    <summary class="faq-question">
-                        <span>¿Cómo es la modalidad de pago?</span>
-                        <i class="fa-solid fa-chevron-down faq-icon"></i>
-                    </summary>
-                    <div class="faq-answer">
-                        <p>Se abona un 50% para comenzar el proyecto y el 50% restante al momento de la entrega. El mantenimiento mensual, si lo contratás, se abona mes a mes.</p>
-                    </div>
+                    <summary>¿Cómo es la modalidad de pago?</summary>
+                    <div class="faq-respuesta"><p>Se abona un 50% para comenzar el proyecto y el 50% restante al momento de la entrega. El mantenimiento mensual, si lo contratás, se abona mes a mes.</p></div>
                 </details>
-
                 <details class="faq-item">
-                    <summary class="faq-question">
-                        <span>¿De quién son el sistema y los datos?</span>
-                        <i class="fa-solid fa-chevron-down faq-icon"></i>
-                    </summary>
-                    <div class="faq-answer">
-                        <p>Los datos de tu negocio y tu dominio son siempre tuyos. El código fuente queda bajo mi autoría y vos recibís una licencia de uso del sistema por tiempo indefinido, para usarlo en tu negocio sin restricciones.</p>
-                    </div>
+                    <summary>¿De quién son el sistema y los datos?</summary>
+                    <div class="faq-respuesta"><p>Los datos de tu negocio y tu dominio son siempre tuyos. El código fuente queda bajo mi autoría y vos recibís una licencia de uso del sistema por tiempo indefinido, para usarlo en tu negocio sin restricciones.</p></div>
                 </details>
-
                 <details class="faq-item">
-                    <summary class="faq-question">
-                        <span>¿Quién paga el hosting y el dominio?</span>
-                        <i class="fa-solid fa-chevron-down faq-icon"></i>
-                    </summary>
-                    <div class="faq-answer">
-                        <p>El dominio y el hosting se contratan a tu nombre y los abonás directamente al proveedor, así no dependés de nadie para mantenerlos. Yo me encargo de elegir la opción adecuada, configurarla y dejar todo publicado. Las aplicaciones locales no necesitan hosting.</p>
-                    </div>
+                    <summary>¿Quién paga el hosting y el dominio?</summary>
+                    <div class="faq-respuesta"><p>El dominio y el hosting se contratan a tu nombre y los abonás directamente al proveedor, así no dependés de nadie para mantenerlos. Yo me encargo de elegir la opción adecuada, configurarla y dejar todo publicado. Las aplicaciones locales no necesitan hosting.</p></div>
                 </details>
-
                 <details class="faq-item">
-                    <summary class="faq-question">
-                        <span>¿Qué incluye el mantenimiento mensual?</span>
-                        <i class="fa-solid fa-chevron-down faq-icon"></i>
-                    </summary>
-                    <div class="faq-answer">
-                        <p>Actualizaciones de seguridad, control de que los respaldos se estén haciendo bien, pequeños ajustes y soporte ante dudas o problemas. Los cambios grandes o funciones nuevas se presupuestan aparte.</p>
-                    </div>
+                    <summary>¿Qué incluye el mantenimiento mensual?</summary>
+                    <div class="faq-respuesta"><p>Actualizaciones de seguridad, control de que los respaldos se estén haciendo bien, pequeños ajustes y soporte ante dudas o problemas. Los cambios grandes o funciones nuevas se presupuestan aparte.</p></div>
                 </details>
-
                 <details class="faq-item">
-                    <summary class="faq-question">
-                        <span>¿Qué hace que un sistema sea seguro?</span>
-                        <i class="fa-solid fa-chevron-down faq-icon"></i>
-                    </summary>
-                    <div class="faq-answer">
+                    <summary>¿Qué hace que un sistema sea seguro?</summary>
+                    <div class="faq-respuesta">
                         <p>Que la seguridad esté pensada desde el principio y no agregada al final. Según el proyecto, eso incluye:</p>
-                        <ul class="faq-list">
+                        <ul>
                             <li>Contraseñas guardadas de forma protegida y verificación en dos pasos.</li>
                             <li>Permisos por rol, para que cada persona vea solo lo que necesita.</li>
                             <li>Conexiones cifradas y registro de quién ingresa y desde dónde.</li>
@@ -521,73 +434,24 @@
                         </ul>
                     </div>
                 </details>
-
             </div>
         </section>
     </main>
 
-    <footer class="footer-comercial">
+    <!-- ============ PIE ============ -->
+    <footer class="pie">
+        <div class="pie-gigante" aria-hidden="true">BYFOOGLES</div>
         <p>&copy; 2026 ByFoogles Visuals. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- MODAL LIGHTBOX PARA VER FOTOS Y CAPTURAS -->
-    <div id="image-modal" class="image-modal">
-        <span class="modal-close">&times;</span>
-        <img class="modal-content" id="modal-img" alt="Vista previa">
+    <!-- ============ VISOR DE FOTOS ============ -->
+    <div class="visor" role="dialog" aria-modal="true" aria-label="Visor de fotos" hidden>
+        <button class="visor-cerrar" aria-label="Cerrar">&times;</button>
+        <button class="visor-flecha anterior" aria-label="Foto anterior"><i class="fa-solid fa-chevron-left"></i></button>
+        <img class="visor-img" alt="">
+        <button class="visor-flecha siguiente" aria-label="Foto siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+        <span class="visor-contador"></span>
     </div>
-
-    <!-- SCRIPT LIGHTBOX -->
-    <script>
-        const modal = document.getElementById('image-modal');
-        const modalImg = document.getElementById('modal-img');
-        const closeModal = document.querySelector('.modal-close');
-
-        // Escuchar clicks en las fotos de la galería y en las capturas de proyectos
-        document.querySelectorAll('.gallery-item img, .project-shot img').forEach(img => {
-            img.addEventListener('click', () => {
-                modal.style.display = 'flex';
-                modalImg.src = img.src;
-                modalImg.alt = img.alt;
-            });
-        });
-
-        // Cerrar al hacer click en la X, fuera de la imagen o con Escape
-        closeModal.addEventListener('click', () => modal.style.display = 'none');
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) modal.style.display = 'none';
-        });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                modal.style.display = 'none';
-                cerrarMenu();
-            }
-        });
-
-        // MENÚ DESPLEGABLE PARA CELULAR
-        const navToggle = document.querySelector('.nav-toggle');
-        const navLinks = document.getElementById('menu-principal');
-        const navIcon = navToggle.querySelector('i');
-
-        function cerrarMenu() {
-            navLinks.classList.remove('abierto');
-            navToggle.setAttribute('aria-expanded', 'false');
-            navToggle.setAttribute('aria-label', 'Abrir menú');
-            navIcon.className = 'fa-solid fa-bars';
-        }
-
-        navToggle.addEventListener('click', () => {
-            const abierto = navLinks.classList.toggle('abierto');
-            navToggle.setAttribute('aria-expanded', String(abierto));
-            navToggle.setAttribute('aria-label', abierto ? 'Cerrar menú' : 'Abrir menú');
-            navIcon.className = abierto ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
-        });
-
-        // Cerrar al elegir una sección o al tocar fuera del menú
-        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', cerrarMenu));
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.navbar-comercial')) cerrarMenu();
-        });
-    </script>
 
 </body>
 </html>
