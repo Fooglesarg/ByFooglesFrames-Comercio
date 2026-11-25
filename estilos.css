@@ -696,6 +696,8 @@ img { max-width: 100%; display: block; }
 .proyecto-capturas.solo { grid-template-columns: 1fr; }
 .proyecto-capturas.solo img { aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
 .proyecto-cuerpo { padding: 26px 28px 30px; }
+.proyecto-ancho { grid-column: 1 / -1; display: grid; grid-template-columns: 1.4fr 1fr; align-items: center; }
+.proyecto-ancho .proyecto-capturas { height: 100%; align-content: center; }
 .proyecto-tipo {
     display: inline-block;
     font-size: 0.72rem;
@@ -967,6 +969,7 @@ img { max-width: 100%; display: block; }
     .paso { text-align: left; display: grid; grid-template-columns: 56px 1fr; column-gap: 18px; }
     .paso-num { grid-row: span 2; margin: 0; }
     .proyectos, .contacto { grid-template-columns: 1fr; }
+    .proyecto-ancho { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 760px) {
